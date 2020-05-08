@@ -5,10 +5,9 @@
   [f]
   (case (type f)
     :cfunction
-      (when-let [sym-info (_jmod_where_defined/dladdr f)
-                 in-janet (= "janet" (sym-info :file-name))
-                 module (if in-janet (os/readlink "/proc/self/exe") (sym-info :file-name))
-                 _ (os/stat module)]
+      (when-let [sym-info (_jmod_where_defined/dladdr f)]
+        (def in-janet (= "janet" (sym-info :file-name)))
+        (def module (if in-janet (os/readlink "/proc/self/exe") (sym-info :file-name)))
         (def address
           (if in-janet
             (sym-info :func-address)
@@ -23,4 +22,3 @@
             line  (get-in asm ['sourcemap 0 0])]
         [file line])
     nil))
-
