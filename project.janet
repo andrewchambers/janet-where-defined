@@ -16,7 +16,7 @@
   :name "_jmod_where_defined"
   :source ["where-defined.c"]
   :cflags ["-I./libbacktrace"]
-  :lflags ["./libbacktrace/.libs/libbacktrace.a"])
+  :lflags ["-L./libbacktrace/.libs" "-lbacktrace"])
 
 (add-dep "build/where-defined.o" "libbacktrace/.libs/libbacktrace.a")
 (add-dep "build/_jmod_where_defined.so" "libbacktrace/.libs/libbacktrace.a")
