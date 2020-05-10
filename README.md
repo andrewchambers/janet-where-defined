@@ -1,6 +1,6 @@
 # where-defined
 
-Lookup where your janet function was defined.
+Lookup where your janet functions, C functions, symbols and values where defined.
 
 ```
 janet:1:> (use where-defined)
