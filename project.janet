@@ -3,7 +3,8 @@
   :author "Andrew Chambers"
   :license "MIT"
   :url "https://github.com/andrewchambers/janet-where-defined"
-  :repo "git+https://github.com/andrewchambers/janet-where-defined.git")
+  :repo "git+https://github.com/andrewchambers/janet-where-defined.git"
+  :dependencies [])
 
 (rule "libbacktrace/.libs/libbacktrace.a" []
   (def wd (os/cwd))
