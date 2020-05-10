@@ -12,5 +12,6 @@
   (cond 
     (or (= ty :function) (= ty :cfunction))
       (let [{:file file :line line} (func-info f)]
-        [file line])
+        (when (and file line)
+          [file line]))
     nil))

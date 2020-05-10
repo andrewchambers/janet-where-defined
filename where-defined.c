@@ -10,7 +10,7 @@ static void bt_error_callback(void *data, const char *msg, int errnum) {
 
 static int bt_full_callback(void *data, uintptr_t pc, const char *filename, int lineno, const char *function) {
     JanetKV *s = janet_struct_begin(4);
-    janet_struct_put(s, janet_ckeywordv("line"), janet_wrap_number(lineno));
+    janet_struct_put(s, janet_ckeywordv("line"), filename ? janet_wrap_number(lineno) : janet_wrap_nil());
     janet_struct_put(s, janet_ckeywordv("file"), filename ? janet_cstringv(filename) : janet_wrap_nil());
     janet_struct_put(s, janet_ckeywordv("name"), function ? janet_cstringv(function) : janet_wrap_nil());
     *((Janet*)data) = janet_wrap_struct(janet_struct_end(s));
