@@ -1,0 +1,10 @@
+(use where-defined)
+(import ./defines)
+
+(assert (= ((where-defined 'defines/t1) 1) 1))
+(assert (= ((where-defined 'defines/f2) 1) 2))
+(assert (= ((where-defined defines/t1) 1) 1))
+(assert (= ((where-defined defines/f2) 1) 2))
+(assert (= (where-defined 'defines/t1) (where-defined defines/t1)))
+(assert (= (where-defined 'defines/f2) (where-defined defines/f2)))
+(assert (= (where-defined 'sorted) (where-defined sorted)))
